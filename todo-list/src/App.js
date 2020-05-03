@@ -1,12 +1,16 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import TodoItem from './components/TodoItem'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <TodoItem title="eating"/>
+        <TodoItem title="sleeping"/>
+        <TodoItem title="eating and sleeping"/>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
