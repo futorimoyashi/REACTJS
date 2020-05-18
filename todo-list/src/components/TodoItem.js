@@ -26,7 +26,8 @@ TodoItem.propTypes = {
     item: PropTypes.shape({
         title: PropTypes.string,
         isComplete: PropTypes.bool
-    })
+    }),
+    onClick: PropTypes.func
 }
 
 export default TodoItem

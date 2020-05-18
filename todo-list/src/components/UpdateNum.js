@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 class UpdateNum extends Component {
     constructor() {
+        console.log('Counter Constructor')
         super();
         this.state = { value: 0}
         this.minus = this.minus.bind(this)
@@ -9,15 +10,14 @@ class UpdateNum extends Component {
     }
 
     minus() {
-        var newValue = this.state.value - 1
-        this.setState({value: newValue})
+        this.setState({value: this.state.value - 1})
     }
 
     plus() {
-        var newValue = this.state.value + 1
-        this.setState({value: newValue})
+        this.setState({value: this.state.value + 1})
     }
     render() {
+        console.log('Counter Render')
         return (
             <div>
                 <button onClick={this.minus}>-</button>
@@ -25,6 +25,18 @@ class UpdateNum extends Component {
                 <button onClick={this.plus}>+</button>
             </div>
         );
+    }
+
+    componentDidMount() {
+        console.log('Counter did mount')
+    }
+
+    componentDidUpdate() {
+        console.log('Counter did update')
+    }
+
+    componentWillUnmount() {
+        console.log('Counter will unmount')
     }
 }
 
