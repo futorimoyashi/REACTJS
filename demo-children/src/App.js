@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 import './App.css';
 // import Accordion from './components/Accordion'
 // import { Button } from 'reactstrap'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from 'react-router-dom'
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Link
+// } from 'react-router-dom'
 
-const index = () => <h2>Index</h2>
-const about = () => <h2>About</h2>
+// const index = () => <h2>Index</h2>
+// const about = () => <h2>About</h2>
+import AwesomeImage from './components/AwesomeImage'
+import HoverOpacity from './components/HoverOpacity'
+import withHoverOpacity from './components/withHoverOpacity'
 
+const HoverOpacityAwesomeImage = withHoverOpacity(AwesomeImage)
 class App extends Component {
   // constructor(props) {
   //   super(props);
@@ -36,7 +40,7 @@ class App extends Component {
         <Button color="warning">warning</Button>{' '}
         <Button color="danger">danger</Button>{' '}
         <Button color="link">link</Button> */}
-        <Router>
+        {/* <Router>
           <nav>
             <ul>
               <li>
@@ -49,7 +53,11 @@ class App extends Component {
           </nav>
           <Route path="/" exact component={index} />
           <Route path="/about" exact component={about} />
-        </Router>
+        </Router> */}
+        {/* <HoverOpacity>
+          <AwesomeImage src="https://picsum.photos/200/300" />
+        </HoverOpacity> */}
+        <HoverOpacityAwesomeImage src="https://picsum.photos/200/300" />
       </div>
     );
   }
