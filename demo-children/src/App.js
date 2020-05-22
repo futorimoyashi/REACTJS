@@ -12,10 +12,13 @@ import './App.css';
 // const index = () => <h2>Index</h2>
 // const about = () => <h2>About</h2>
 import AwesomeImage from './components/AwesomeImage'
-import HoverOpacity from './components/HoverOpacity'
+// import HoverOpacity from './components/HoverOpacity'
 import withHoverOpacity from './components/withHoverOpacity'
+import withGrayScale from './components/withGrayScale'
 
 const HoverOpacityAwesomeImage = withHoverOpacity(AwesomeImage)
+const BlackImage = withGrayScale(AwesomeImage, 1)
+const OrgImage = withGrayScale(AwesomeImage, 0)
 class App extends Component {
   // constructor(props) {
   //   super(props);
@@ -58,6 +61,8 @@ class App extends Component {
           <AwesomeImage src="https://picsum.photos/200/300" />
         </HoverOpacity> */}
         <HoverOpacityAwesomeImage src="https://picsum.photos/200/300" />
+        <BlackImage src="https://picsum.photos/200/300" />
+        <OrgImage src="https://picsum.photos/200/300" />
       </div>
     );
   }
