@@ -1,27 +1,29 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import './App.css';
-import TopMenu from './Components/TopMenu'
+import TopMenu from './components/TopMenu'
 import Products from './pages/Products'
+
+import { CartProvider } from './contexts/Cart'
 
 const Index = () => <h2>Home</h2>
 
 function App() {
   return (
-    <div className="App">
+    <CartProvider>
       <Router>
-        <div>
-        <TopMenu />
-        <Route path="/" exact component={Index}/>
-        <Route path="/products/" exact component={Products}/>
+        <div className="App">
+          <div>
+            <TopMenu />
+            <Route path="/" exact component={Index}/>
+            <Route path="/products/" exact component={Products}/>
+          </div>
         </div>
       </Router>
-    </div>
+    </CartProvider>
   );
 }
 
