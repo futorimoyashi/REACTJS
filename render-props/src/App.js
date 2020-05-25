@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import Counter from './components/Counter'
+import Counter2 from './components/Counter2'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Counter>
+        {/* <Counter>
           {({ count }) => <h2>{count}</h2>}
-        </Counter>
+        </Counter> */}
+        <Counter2 />
       </div>
     );
   }
