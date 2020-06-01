@@ -4,6 +4,7 @@ import queryString from 'query-string'
 
 import PostList from './Component/PostList'
 import Pagination from './Component/Pagination'
+import PostFilterForm from './Component/PostFilterForm'
 
 function App() {
   const [postList, setPostList] = useState([]);
@@ -41,8 +42,17 @@ function App() {
     })
   }
 
+  function handleFilterChange(newFilters) {
+    setFilter({
+      ...filter,
+      _page: 1,
+      title_like: newFilters.searchTerm
+    })
+  }
+
   return (
     <div className="App">
+      <PostFilterForm onSubmit={handleFilterChange} />
       <PostList posts={postList} />
       <Pagination 
         pagination={pagination}
