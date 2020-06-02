@@ -5,6 +5,7 @@ import queryString from 'query-string'
 import PostList from './Component/PostList'
 import Pagination from './Component/Pagination'
 import PostFilterForm from './Component/PostFilterForm'
+import Clock from './Component/Clock'
 
 function App() {
   const [postList, setPostList] = useState([]);
@@ -52,6 +53,7 @@ function App() {
 
   return (
     <div className="App">
+      <Clock />
       <PostFilterForm onSubmit={handleFilterChange} />
       <PostList posts={postList} />
       <Pagination 
