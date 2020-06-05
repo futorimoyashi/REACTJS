@@ -7,6 +7,7 @@ import Pagination from './Component/Pagination'
 import PostFilterForm from './Component/PostFilterForm'
 import Clock from './Component/Clock'
 import BetterClock from './Component/BetterClock'
+import MagicBox from './Component/MagicBox'
 
 function App() {
   const [postList, setPostList] = useState([]);
@@ -56,6 +57,7 @@ function App() {
     <div className="App">
       <Clock />
       <BetterClock />
+      <MagicBox />
       <PostFilterForm onSubmit={handleFilterChange} />
       <PostList posts={postList} />
       <Pagination 
