@@ -8,6 +8,7 @@ import PostFilterForm from './Component/PostFilterForm'
 import Clock from './Component/Clock'
 import BetterClock from './Component/BetterClock'
 import MagicBox from './Component/MagicBox'
+import LoginForm from './Component/LoginForm'
 
 function App() {
   const [postList, setPostList] = useState([]);
@@ -56,14 +57,15 @@ function App() {
   return (
     <div className="App">
       <Clock />
-      <BetterClock />
+      {/* <BetterClock />
       <MagicBox />
       <PostFilterForm onSubmit={handleFilterChange} />
       <PostList posts={postList} />
       <Pagination 
         pagination={pagination}
         onPageChange={handlePageChange}
-      />
+      /> */}
+      <LoginForm />
     </div>
   );
 }
