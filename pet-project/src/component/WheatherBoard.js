@@ -20,8 +20,13 @@ export default function(props) {
 
     useEffect(() => {
         async function fetchData() {
+            const url = 'https://dataservice.accuweather.com/forecasts/v1/daily/5day/' + 
+                        '352954' + 
+                        '?language=vi&apikey=' + 
+                        // 'gHuEn9ghiy20CHSHAJ4ccgWcdU0XWkGS'
+                        'yTGGU4zYUR1W0szyselrddoBP6fPwDPd'
             try {
-                axios.get('https://dataservice.accuweather.com/forecasts/v1/daily/5day/' + '352954' + '?language=vi&apikey=' + 'gHuEn9ghiy20CHSHAJ4ccgWcdU0XWkGS')
+                axios.get(url)
                     .then(res => setData(res.data.DailyForecasts))
             } catch (error) {
                 console.log(error.message)
