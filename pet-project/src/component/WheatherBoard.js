@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import {
     Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, Row, Col, Form, FormGroup, Label, Input
+    CardTitle, CardSubtitle, Row, Col, Form, FormGroup, Input
   } from 'reactstrap';
 
 export default function(props) {
@@ -17,6 +17,11 @@ export default function(props) {
 
     function FtoC(d) {
         return Math.round((d - 32) * 5 / 9)
+    }
+
+    function GetImg(id) {
+        var img = require(`../icon/${id}.png`)
+        return img
     }
 
     useEffect(() => {
@@ -39,7 +44,6 @@ export default function(props) {
     return (
         <div>
             <Form style={{margin: '40px'}}>
-                
                 <FormGroup>
                     <h2>Choose Ur City</h2>
                     <Input type="select" name="selectMulti" id="city" onClick={() => {
@@ -57,10 +61,15 @@ export default function(props) {
                         <Card>
                             <CardBody>
                                 <CardTitle>{formatDate(x.Date)}</CardTitle>
+                                <hr/>
                                 <CardSubtitle>+ Ngày: {FtoC(x.Temperature.Maximum.Value)}°C</CardSubtitle>
-                                <CardText>{x.Day.IconPhrase}</CardText>
+                                <CardText>{x.Day.IconPhrase}
+                                    <CardImg src={GetImg(x.Day.Icon)} style={{width: '30%', height: '30%'}}/>
+                                </CardText>
                                 <CardSubtitle>+ Đêm: {FtoC(x.Temperature.Minimum.Value)}°C</CardSubtitle>
-                                <CardText>{x.Night.IconPhrase}</CardText>
+                                <CardText>{x.Night.IconPhrase}
+                                    <CardImg src={GetImg(x.Night.Icon)} style={{width: '30%', height: '30%'}}/>
+                                </CardText>
                             </CardBody>
                         </Card>
                     </Col>

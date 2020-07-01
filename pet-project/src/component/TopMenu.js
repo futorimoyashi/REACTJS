@@ -18,7 +18,7 @@ const TopMenu = (props) => {
   return (
     <div>
       <Navbar color="dark" dark expand="md">
-        <img alt src={logo} width={32} height={32} />
+        <img alt="" src={logo} width={32} height={32} />
         <NavbarBrand href="/">React App</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
