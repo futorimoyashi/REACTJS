@@ -4,6 +4,8 @@ import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Row, Col, Form, FormGroup, Input
   } from 'reactstrap';
+import LineChart from './LineChart'
+
 
 export default function(props) {
     const [data, setData] = useState([])
@@ -20,7 +22,9 @@ export default function(props) {
     }
 
     function GetImg(id) {
-        var img = require(`../icon/${id}.png`)
+        var img
+        if(id > 38) img = require("../icon/38.png")
+        else img = require(`../icon/${id}.png`)
         return img
     }
 
@@ -75,6 +79,7 @@ export default function(props) {
                     </Col>
                 ))}
             </Row>
+            <LineChart id={id} />
         </div>
     )
 }
