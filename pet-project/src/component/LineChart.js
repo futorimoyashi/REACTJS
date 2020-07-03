@@ -6,17 +6,16 @@ import { Row, Col } from 'reactstrap';
 export default function(props) {
     const [data, setData] = useState([])
     const [precipitation, setPrecipitation] = useState([])
+    const [temp, setTemp] = useState([])
 
-    // function GetImg(id) {
-    //     if(id > 38)  var img = require(`../icon/38.png`)
-    //     else var img = require(`../icon/${id}.png`)
-    //     return img
-    // }
+    function FtoC(d) {
+        return Math.round((d - 32) * 5 / 9)
+    }
 
     function getHour(date) {
         var d = new Date(date)
     
-        return `${d.getHours()}`
+        return `${d.getHours()}h`
     }
 
     useEffect(() => {
@@ -30,21 +29,24 @@ export default function(props) {
 
             const listHours = []
             const listPrecipitation = []
+            const listTemp = []
 
             res.data.map(x => {
                 listHours.push(getHour(x.DateTime))
                 listPrecipitation.push(x.PrecipitationProbability)
+                listTemp.push(FtoC(x.Temperature.Value))
             })
 
             setData(listHours)
             setPrecipitation(listPrecipitation)
+            setTemp(listTemp)
         }
         fetchData()
     }, [props.id])
 
     return (
         <Row>
-            <Col sm={{size: 6, offset: 0}}>
+            <Col sm={{size: 6}}>
                 <Line
                     data={{
                     labels: data,
@@ -61,6 +63,31 @@ export default function(props) {
                     title: {
                         display: true,
                         text: "Precipitation Probability in next 12 hours"
+                    },
+                    legend: {
+                        display: true,
+                        position: "bottom"
+                    }
+                    }}
+                />
+            </Col>
+            <Col sm={{size: 6}}>
+                <Line
+                    data={{
+                    labels: data,
+                    datasets: [
+                        {
+                        data: temp,
+                        label: "Temperature",
+                        borderColor: "#cd753e",
+                        fill: false
+                        }
+                    ]
+                    }}
+                    options={{
+                    title: {
+                        display: true,
+                        text: "Temperature chart in next 12 hours (C Unit)"
                     },
                     legend: {
                         display: true,

@@ -56,6 +56,7 @@ export default function(props) {
                         <option value="353981">Sai Gon</option>
                         <option value="352954">Da Nang</option>
                         <option value="353412">Ha Noi</option>
+                        <option value="348181">Atlanta</option>
                     </Input>
                 </FormGroup>
             </Form>
