@@ -31,7 +31,7 @@ export default function(props) {
             const listPrecipitation = []
             const listTemp = []
 
-            res.data.map(x => {
+            res.data.map(function(x) {
                 listHours.push(getHour(x.DateTime))
                 listPrecipitation.push(x.PrecipitationProbability)
                 listTemp.push(FtoC(x.Temperature.Value))
@@ -45,7 +45,7 @@ export default function(props) {
     }, [props.id])
 
     return (
-        <Row>
+        <Row style={{marginLeft: '25px'}}>
             <Col sm={{size: 6}}>
                 <Line
                     data={{
@@ -71,7 +71,7 @@ export default function(props) {
                     }}
                 />
             </Col>
-            <Col sm={{size: 6}}>
+            <Col sm={{size: 6}} style={{marginLeft: '-15px'}}>
                 <Line
                     data={{
                     labels: data,
