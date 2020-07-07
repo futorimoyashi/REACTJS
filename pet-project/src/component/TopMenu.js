@@ -8,6 +8,7 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap';
+import './logoSpin.css'
 import logo from '../logo.svg'
 
 const TopMenu = (props) => {
@@ -18,7 +19,7 @@ const TopMenu = (props) => {
   return (
     <div>
       <Navbar color="dark" dark expand="md">
-        <img alt="" src={logo} width={32} height={32} />
+        <img alt="" src={logo} width={32} height={32} className="logo"/>
         <NavbarBrand href="/">React App</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

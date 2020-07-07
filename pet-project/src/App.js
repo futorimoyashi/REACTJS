@@ -6,15 +6,10 @@ import LineChart from './component/LineChart'
 import Footer from './component/Footer'
 
 import './App.css'
-import { Col, Form, FormGroup, Input, Label, Row } from 'reactstrap';
+import { Col, Form, FormGroup, Input, Label} from 'reactstrap';
 
 function App() {
-  const [id, setId] = useState(348181)
-
-  function getImg(id) {
-    const img = require(`./icon/${id}.jpg`)
-    return img
-  }
+  const [id, setId] = useState(353981)
 
   return (
     <div className="App">
@@ -29,11 +24,12 @@ function App() {
                   <Input type="select" name="selectMulti" id="city" onClick={() => {
                       setId(document.getElementById("city").value)
                   }}>
-                      <option value="348181">Atlanta</option>
+                      
                       <option value="353981">Sai Gon</option>
                       <option value="352954">Da Nang</option>
                       <option value="353412">Ha Noi</option>
-                      
+                      <option value="348181">Atlanta</option>
+
                   </Input>
                 </Col>
             </FormGroup>

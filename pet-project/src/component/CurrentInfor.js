@@ -1,14 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Col, Row } from 'reactstrap'
+
+import useClock from '../hook/useClock'
+
 export default function(props) {
     const [data, setData] = useState({
+        dateTime: '',
         temp: 0,
+        wheatherText: '',
         wheatherIcon: 1,
         windSpeed: 0,
         uvIndex: 0,
         uvIndexText: '',
     })
+
+    const {timeString} = useClock()
+
+    function formatDate(date) {
+        var d = new Date(date)
+    
+        return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`
+    }
 
     function GetImg(id) {
         var img
@@ -29,7 +42,9 @@ export default function(props) {
             try {
                 const res = await axios.get(url)
                 setData({
+                    dateTime: formatDate(res.data[0].LocalObservationDateTime),
                     temp: res.data[0].Temperature.Metric.Value,
+                    wheatherText: res.data[0].WeatherText,
                     wheatherIcon: res.data[0].WeatherIcon,
                     windSpeed: res.data[0].Wind.Speed.Metric.Value,
                     uvIndex: res.data[0].UVIndex,
@@ -48,11 +63,10 @@ export default function(props) {
             </Col>
             <div style={{height: 'auto', borderLeft: '3px solid black', textAlign: 'left'}}>
                 <ul style={{listStyleType: 'none'}}>
-                    <li><h4>Current Conditions</h4></li>
-                    <li>
-                        + Temperature: {data.temp}°C
-                            <img alt="" src={GetImg(data.wheatherIcon)} style={{width: '12', height: '12'}}/>
-                    </li> 
+                    <li><h4>Current Conditions - {data.dateTime}</h4></li>
+                    <li>+ <b style={{fontSize: '30px'}}>{timeString}</b></li>
+                    <li>+ Temperature: {data.temp}°C</li> 
+                    <li>+ {data.wheatherText} - <img alt="" src={GetImg(data.wheatherIcon)} style={{width: '10', height: '10'}}/></li>
                     <li>+ Wind speed: {data.windSpeed}km/h</li> 
                     <li>+ UV Index: {data.uvIndex} - {data.uvIndexText}</li> 
                 </ul>
